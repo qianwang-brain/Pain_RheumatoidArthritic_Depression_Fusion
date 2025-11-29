@@ -1,13 +1,10 @@
-Pain_RheumatoidArthritic_Depression_Fusion
-
-Codes for the paper:
-“Multi-Site Chronic Pain Reveals Shared Neuro-Immune-Metabolic Alterations Underlying Rheumatoid Arthritis and Depression.”
+#“Multi-Site Chronic Pain Reveals Shared Neuro-Immune-Metabolic Alterations Underlying Rheumatoid Arthritis and Depression.”
 
 E-mail: qianwang_bnu@mail.bnu.edu.cn
 
 This repository provides R code for statistical modeling, survival analysis, mediation analysis, and Mendelian randomization (MR), supporting the findings of the study investigating multidimensional links among rheumatoid arthritis (RA), depression, and multi-site chronic pain (MCP).
 
-Code
+##Code
 0_anova_linear_analysis.R
 
 One-way ANOVA and polynomial trend modeling assessing group differences in MCP-related multi-omic signatures across healthy, depression, RA, and comorbid groups.

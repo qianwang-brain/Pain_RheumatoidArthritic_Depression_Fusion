@@ -88,11 +88,6 @@ rm(list = rm_vars)
 a=lm(status~RA_label+age+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
 vif=car::vif(a)#aGSIF (the last column, named adjusted generalized standard error inflation factor) values above sqrt(2.5) may be of concern
 
-##glm
-logit_model <- glm(status ~ RA_label+age+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome, family = binomial(link = "logit"), data = datas)
-summary(logit_model)
-
-
 
 
 ##--------------------------------DEP----RA
@@ -191,9 +186,7 @@ rm(list = rm_vars)
 a=lm(status~L1+age+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
 vif=car::vif(a)#aGSIF (the last column, named adjusted generalized standard error inflation factor) values above sqrt(2.5) may be of concern
 
-##glm
-logit_model <- glm(status ~ L1+age+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome, family = binomial(link = "logit"), data = datas)
-summary(logit_model)
+
 
 
 

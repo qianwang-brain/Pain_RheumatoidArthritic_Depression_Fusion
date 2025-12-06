@@ -1,4 +1,4 @@
-# Multi-Site Chronic Pain Reveals Shared Neuro-Immune-Metabolic Alterations Underlying Rheumatoid Arthritis and Depression.
+# Multisite chronic pain links shared neuro–immune–metabolic signatures underlying rheumatoid arthritis and depression
 
 E-mail: qianwang_bnu@mail.bnu.edu.cn
 
@@ -29,6 +29,9 @@ Two-sample Mendelian randomization evaluating causal effects of RA on protein tr
 5_MR_plot_forest.R
 
 Generation of publication-ready forest plots summarizing MR causal estimates (OR + 95% CI), formatted for inclusion in main or supplementary figures.
+
+Note: The multi-omic fusion method mCCAR has been released and integrated into the Fusion ICA Toolbox (FIT) (https://trendscenter.org/software/fit
+). All related code is publicly available and can be directly downloaded and used by researchers worldwide.
 
 🔒 Data Availability Statement
 

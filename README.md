@@ -1,4 +1,4 @@
-# Multisite chronic pain links shared neuro–immune–metabolic signatures underlying rheumatoid arthritis and depression
+# Multisite Chronic Pain-Guided Analysis Reveals Neuro-Immune-Metabolic Signatures underlying Rheumatoid Arthritis and Depression
 
 E-mail: qianwang_bnu@mail.bnu.edu.cn
 

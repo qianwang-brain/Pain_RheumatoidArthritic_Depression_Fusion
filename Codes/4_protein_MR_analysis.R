@@ -53,7 +53,6 @@ library(data.table)
 library(TwoSampleMR)
 library(dplyr)
 library(MRPRESSO)
-# 0. 读取蛋白质名称列表
 protein_names <- fread("E:/Project_R/R_code/UKB_project_RA/RA_MR_analysis/protein_name.csv",
                        header = TRUE)
 names(protein_names) <- "protein"
@@ -231,4 +230,5 @@ write.csv(
   row.names = FALSE,
   fileEncoding = "GBK" 
 )
+
 

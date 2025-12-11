@@ -48,8 +48,6 @@ library(survival)
 library(survminer)
 
 datas <- read.csv('C:/Program Files/MATLAB/R2020b/bin/ukb_RA/pain_guided_blood/4_Mediation/mediation1/1_RA_label_cox/data_cox.csv')
-
-# 将年龄按临床意义或数据分布分层（示例：<65岁 vs ≥65岁）
 datas$age_strata <- ifelse(datas$age < 65, "Younger", "Older")
 datas$age_strata <- factor(datas$age_strata, levels = c("Younger", "Older"))
 
@@ -57,20 +55,14 @@ datas$age_strata <- factor(datas$age_strata, levels = c("Younger", "Older"))
 cox_model <- coxph(Surv(time, status) ~ RA_label+strata(age_strata)+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
 summary(cox_model)
 
-# 验证Cox模型的比例风险假设
 test.ph <- cox.zph(cox_model)
-print(test.ph)  # 若全局检验p>0.05，满足假设
-
-
+print(test.ph)  
 test.ph <- cox.zph(cox_model,"rank")
-print(test.ph)  # 若全局检验p>0.05，满足假设
+print(test.ph) 
 
-
-# 提取特定变量的HR结果
 hr_data <- summary(cox_model)$coefficients["RA_label", ]
 confint_data <- summary(cox_model)$conf.int["RA_label", ]
 
-# 创建结果数据框
 result_RA <- data.frame(
   variable = "RA Status",
   HR = exp(coef(cox_model)["RA_label"]),
@@ -82,7 +74,6 @@ result_RA <- data.frame(
 all_vars <- ls(all.names = TRUE)  # 包括隐藏变量（以`.`开头的变量）
 rm_vars <- setdiff(all_vars, "result_RA")
 rm(list = rm_vars)
-
 
 ## evaluate vif of predictiors
 a=lm(status~RA_label+age+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
@@ -96,8 +87,6 @@ library(survival)
 library(survminer)
 
 datas <- read.csv('C:/Program Files/MATLAB/R2020b/bin/ukb_RA/pain_guided_blood/4_Mediation/mediation2/dep_label_cox/data_cox.csv')
-
-# 将年龄按临床意义或数据分布分层（示例：<65岁 vs ≥65岁）
 datas$age_strata <- ifelse(datas$age < 65, "Younger", "Older")
 datas$age_strata <- factor(datas$age_strata, levels = c("Younger", "Older"))
 
@@ -105,20 +94,14 @@ datas$age_strata <- factor(datas$age_strata, levels = c("Younger", "Older"))
 cox_model <- coxph(Surv(time, status) ~ dep_label+strata(age_strata)+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
 summary(cox_model)
 
-# 验证Cox模型的比例风险假设
 test.ph <- cox.zph(cox_model)
-print(test.ph)  # 若全局检验p>0.05，满足假设
-
-
+print(test.ph)  
 test.ph <- cox.zph(cox_model,"rank")
-print(test.ph)  # 若全局检验p>0.05，满足假设
+print(test.ph)  
 
-
-# 提取特定变量的HR结果
 hr_data <- summary(cox_model)$coefficients["dep_label", ]
 confint_data <- summary(cox_model)$conf.int["dep_label", ]
 
-# 创建结果数据框
 result_dep <- data.frame(
   variable = "dep Status",
   HR = exp(coef(cox_model)["dep_label"]),
@@ -142,33 +125,29 @@ summary(logit_model)
 
 
 
-##Blood signatures separately
+##----------------------------------Blood signatures separately
 library(mediation)
 library(survival)
 library(survminer)
 
 datas <- read.csv('C:/Program Files/MATLAB/R2020b/bin/ukb_RA/pain_guided_blood/4_Mediation/mediation1/data_mediation1_blood.csv')
-# 将年龄按临床意义或数据分布分层（示例：<65岁 vs ≥65岁）
 datas$age_strata <- ifelse(datas$age < 65, "Younger", "Older")
 datas$age_strata <- factor(datas$age_strata, levels = c("Younger", "Older"))
 
 
 cox_model <- coxph(Surv(time, status) ~ L1+strata(age_strata)+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
 summary(cox_model)
-
-# 验证Cox模型的比例风险假设
 test.ph <- cox.zph(cox_model)
-print(test.ph)  # 若全局检验p>0.05，满足假设
+print(test.ph)  
 
 
 test.ph <- cox.zph(cox_model,"rank")
-print(test.ph)  # 若全局检验p>0.05，满足假设
+print(test.ph)  
 
-# 提取特定变量的HR结果
+
 hr_data <- summary(cox_model)$coefficients["L1", ]
 confint_data <- summary(cox_model)$conf.int["L1", ]
 
-# 创建结果数据框
 result_L1 <- data.frame(
   variable = "L1",
   HR = exp(coef(cox_model)["L1"]),
@@ -178,13 +157,14 @@ result_L1 <- data.frame(
 )
 
 
-all_vars <- ls(all.names = TRUE)  # 包括隐藏变量（以`.`开头的变量）
+all_vars <- ls(all.names = TRUE) 
 rm_vars <- setdiff(all_vars, c("result_RA","result_L1"))
 rm(list = rm_vars)
 
 ## evaluate vif of predictiors
 a=lm(status~L1+age+gender+bmi+alcohol+smooking+ethnicity+income+university_education+deprivation+metabolic_syndrome,data = datas)
 vif=car::vif(a)#aGSIF (the last column, named adjusted generalized standard error inflation factor) values above sqrt(2.5) may be of concern
+
 
 
 

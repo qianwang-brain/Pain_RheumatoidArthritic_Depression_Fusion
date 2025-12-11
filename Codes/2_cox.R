@@ -15,11 +15,9 @@ library(ggplot2)
 library(dplyr)
 library(forcats)
 
-# 数据预处理（保持原始顺序）
 data <- data %>%
   mutate(variable = fct_rev(fct_inorder(variable)))
 
-# 动态计算x轴范围
 x_limits <- c(floor(min(data$lower)*10)/10, ceiling(max(data$upper)*10)/10)
 
 ggplot(data, aes(x = HR, y = variable)) +
@@ -62,6 +60,7 @@ ggsave("E:/Project_R/R_code/UKB_project_RA/Cox_results/before_mediation1/cox1.pd
        device = "pdf", 
        units = "in",
        dpi = 300)
+
 
 
 
